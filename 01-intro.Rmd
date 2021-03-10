@@ -1,0 +1,34 @@
+# Configuración básica {-}
+
+Enlace para la descarga de R: <https://cran.r-project.org/>
+
+Se recomienda utilizar R Studio para un manejo más cómodo del programa.
+Enlace para descarga de RStudio: <http://www.rstudio.com/>
+
+R Studio es un entorno de desarrollo integrado (IDE) para la utilización del lenguaje R. Es un conjunto de herramientas integradas para obtener un uso más productivo de R.
+
+# Breve repaso de cómo funciona R {-}
+
+R es un lenguaje orientado a objeto. Es por ello que resulta ser un programa flexible y de fácil de utilizar.
+Orientado a objetos significa que las variables, datos, funciones, resultados, etc., se guardan en la memoria de la computadora en forma de objetos con un nombre específico.
+
+- R es un entorno de software libre para el cálculo estadístico y generación de gráficos.
+- Es un GNU proyect similar al lenguaje S que fue desarrollado en los laboratorios Bell por Jhon Chambers y colegas.
+- R provee una alta variedad de estadísticas, como son: modelos lineales y no lineales, tests para estadística clásica, análisis de series de tiempo, clasificación, clustering, etc.) 
+- R es posible como software libre bajo los términos de Free Softwares Foundation's GNU General Public License. 
+
+```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19)
+```
+
+Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+
+```{r nice-tab, tidy=FALSE}
+knitr::kable(
+  head(iris, 20), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
+
+You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].

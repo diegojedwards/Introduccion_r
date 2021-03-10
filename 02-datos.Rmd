@@ -1,0 +1,23 @@
+# Manejo de datos {-}
+
+- En el prompt de R introducimos los comandos. 
+El símbolo **<-** es el operador de asignación.
+
+- Los comentarios lo indicamos con el caracter # al comienzo de la oración.
+
+## Operaciones básicas con R {-}
+
+R nos permite realizar todo tipo de operaciones algebraicas
+
+```{r, prompt=TRUE}
+2 + 2   #Suma
+2 - 2   #Resta
+2 * 2   #Multiplicación
+2 / 2   #División
+2 ^ 2   #Potencia
+2 %/% 2 #División entera
+2 %% 2  #Resto/residuo
+sqrt(9) #Raíz cuadrada
+abs(-2) #Valor absoluto
+```
+
