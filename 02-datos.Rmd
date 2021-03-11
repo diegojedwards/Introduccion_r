@@ -16,7 +16,7 @@ R nos permite realizar todo tipo de operaciones algebraicas
 2 / 2   #División
 2 ^ 2   #Potencia
 2 %/% 2 #División entera
-2 %% 2  #Resto/residuo
+4 %% 2  #Resto/residuo
 sqrt(9) #Raíz cuadrada
 abs(-2) #Valor absoluto
 ```
