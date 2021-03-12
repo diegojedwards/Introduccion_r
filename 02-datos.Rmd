@@ -21,3 +21,182 @@ sqrt(9) #Raíz cuadrada
 abs(-2) #Valor absoluto
 ```
 
+Si la expresión aritmética es muy grande, R devuelve 'Inf' para un valor positivo y '-Inf' para un valor negativo.
+
+Ejemplo
+
+```{r, echo = TRUE, eval = TRUE, prompt = TRUE}
+2^2048
+``` 
+
+Si la expresión es una indeterminación, R devuelve NaN.
+
+Ejemplo
+
+```{r,eval = TRUE, prompt = TRUE}
+0/0
+``` 
+
+## Tipos de datos {-}
+
+Tipos de datos representados por los objetos:
+
+- Caracter
+- Numérico (números reales)
+- Enteros
+- Complejos
+- Lógicos (Verdadero/Falso)
+
+## Objetos posibles en R {-}
+
+- **Vector:** es el objeto básico. Puede contenter solo elememtos del mismo tipo.
+\setlength{\parskip}{12pt}
+- **Factor:** son utilizados para representar datos categóricos. Pueden estar ordenados o no. Se puede pensar de un factor como un vector de tipo entero donde cada entero tiene una etiqueta.
+\setlength{\parskip}{12pt}
+- **Matrices:** es una generalización multidimensional del vector. Tiene los elementos del mismo tipo.
+\setlength{\parskip}{12pt}
+- **Arreglos:** un arreglo es la generalización de una matriz de dos dimensiones al caso multidimensional. 
+\setlength{\parskip}{12pt}
+- **Data frame:** se utilizan para almacenar datos tabulados.
+\setlength{\parskip}{12pt}
+- **Listas:** una lista es un tipo especial de vector que puede contener elementos de diferentes clases.
+
+### Vector {-}
+Una de las posibildades de crear un vector es utilizar al orden **c()**
+
+```{r}
+
+x <- c(0.5, 0.6) ## numérico
+x <- c(TRUE, FALSE) ## lógico
+x <- c(T, F) ## logical
+x <- c("a", "b", "c") ## caracter
+x <- c(1, 2, 3, 4) ## entero
+x <- c(1+0i, 2+4i) ## complejo
+```
+
+Para crear un vector que contenga una secuencia de números, podemos hacerlo de diferentes maneras.
+
+```{r, prompt = TRUE}
+x <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+x
+```
+
+```{r, prompt = TRUE}
+x <- 1:10 #Otra manera de crear el mismo vector
+x
+```
+
+```{r, echo = TRUE, eval = TRUE, prompt = TRUE}
+x <- seq(1, 10, 1) #La función seq puede crear 
+                   #secuencias de n° reales
+x 
+```
+
+```{r, prompt = TRUE}
+x <- vector(mode = "numeric", length = 5) #En este caso creamos un 
+                                          #vector numérico con 0 de 
+                                          #longitud 5.
+x
+```
+
+### Matrices {-}
+
+Cuando se crean matrices se debe indicar el número de filas y el número de columnas requeridos.
+\setlength{\parskip}{12pt}
+Por ejemplo:
+
+```{r, echo = TRUE, eval = TRUE}
+m <- matrix(nrow = 2, ncol = 3)
+m #Visualizamos la matriz
+dim(m) #Verificamos las dimensiones de la matriz
+```
+
+En este caso se creó una matriz con 2 filas y 3 columnas pero sin datos
+
+Podemos crear una matriz con datos de la siguiente manera:
+
+```{r, echo = TRUE, eval = TRUE}
+m <- matrix(1:6, nrow = 2, ncol = 3) 
+m #Visualizamos la matriz
+```
+
+La matriz se completa columna por columna de izquierda a derecha.
+
+### Arreglos (array) {-}
+
+Para crear un arreglo de dimensión 3x3x2 que contiene los números del 1 al 18, procedemos de la siguiente manera:
+
+```{r, echo = TRUE, eval = TRUE}
+arreglo <- array(c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 
+                   13,14, 15, 16, 17, 18), dim=c(3, 3, 2))
+```
+
+Visualizamos el contenido de arreglo.
+
+```{r}
+arreglo
+```
+
+### Listas {-}
+
+Una lista es una especie de vector que contiene elementos de diferentes clases.
+
+```{r, echo = TRUE, eval = TRUE}
+lista <- list(Numeros = 1:5, Cadena = c("Hola", "Hola"),
+              Matriz = matrix(1:6, nrow = 2, ncol = 3))
+lista
+```
+
+Se puede crear una lista de listas.
+
+```{r, echo = TRUE, eval = TRUE}
+lista_1 <- list(lista, lista)
+lista_1
+```
+
+### Factores {-}
+
+Ejemplo para la creación de factores:
+
+```{r, echo = TRUE, eval = TRUE}
+x <- factor(c("si", "si", "no", "si", "no")) #Creamos un 
+                                             #vector de 
+                                             #factores
+x
+table(x)
+```
+
+```{r}
+unclass(x) #Visualizamos el vector sin las etiquetas
+```
+
+Podemos colocar el orden de niveles del factor utilizando la orden levels()
+
+```{r, echo = TRUE, eval = TRUE}
+x <- factor(c("si", "si", "no", "si", "no"), levels = c("si", "no"))
+x
+```
+
+### Data frames {-}
+
+- Son representados como un tipo especial de lista donde cada elemento de la lista debe tener la misma longitud.
+- Cada elemento de la lista puede ser pensado como una columna y la longitud de cada elemento de la lista es el número de filas.
+- Diferente a las matrices, los data framaes pueden cargar diferentes clases de objetos en cada columna, similar a las listas como fue mencionado anteriormente; las matrices deben tener los elementos de la misma clase.
+- Los data frames tienen un atributo especial llamado **row.names()**.
+- Pueden ser convertidos a matriz a partir de aplicar la coerción **data.mtrix()**.
+
+Ejemplo para crear un data frame
+
+```{r, echo = TRUE, eval = TRUE}
+df <- data.frame(Nombre = c("manzana", "Pera", 
+                            "Banana", "Ciruela"),
+                            Cantidad = 1:4)
+df      
+```
+
+```{r, echo = TRUE, eval = TRUE}
+nrow(df)  #Observamos el número de filas.
+ncol(df)  #Observamos el número de columnas.
+colnames(df) #Solicitamos los nombres de las columnas.
+row.names(df) #Solicitamos los nombres de las filas.
+```
